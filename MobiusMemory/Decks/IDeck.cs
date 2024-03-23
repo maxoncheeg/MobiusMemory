@@ -1,11 +1,14 @@
 ﻿using MobiusMemory.Cards;
+using MobiusMemory.Cards.Positioning;
 
 namespace MobiusMemory.Decks;
 
 public interface IDeck
 {
+    public int AreaWidth { get; }
+    public IReadOnlyList<IReadOnlyList<ICard?>> Cards { get; }
+    
     public event Action? CardsAreOut;
-    public IReadOnlyCollection<IReadOnlyCollection<ICard?>> Cards { get; }
 
-    public bool CheckCards(System.Drawing.Point first, System.Drawing.Point second);
+    public bool OpenCards(CardsSelection selection);
 }

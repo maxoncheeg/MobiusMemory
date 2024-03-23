@@ -10,7 +10,7 @@ public class MemoryRandomCardFactory : ICardFactory
     private readonly ArrayList _cards =
     [
         "one", "two", "three", "four",
-        "apple", "orange",
+        "apple", "orange", "melon", "watermelon", "sugar",
         "car"
     ];
 
@@ -18,11 +18,10 @@ public class MemoryRandomCardFactory : ICardFactory
     {
         if (index != -1 && (index < 0 || index > _cards.Count))
             throw new IndexOutOfRangeException(nameof(index));
-        else
+        if(index == -1)
             do
                 index = _random.Next(_cards.Count);
             while (_indexMemory.IndexOf(index) != -1);
-
         if (_cards.Count <= index)
             throw new ApplicationException("Incorrect card factory index");
         if (_cards[index] is not string value || string.IsNullOrEmpty(value))

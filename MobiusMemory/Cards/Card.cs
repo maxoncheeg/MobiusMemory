@@ -1,4 +1,6 @@
-﻿namespace MobiusMemory.Cards;
+﻿using System.Diagnostics;
+
+namespace MobiusMemory.Cards;
 
 public class Card : ICard
 {
@@ -12,5 +14,9 @@ public class Card : ICard
         Name = name;
     }
 
-    public bool Equals(ICard? other) => other != null && Name == other.Name;
+    public bool Equals(ICard? other)
+    {
+        Debug.WriteLine(other.Name + Name + " " + Name == other.Name);
+        return other != null && Name == other.Name;
+    }
 }
